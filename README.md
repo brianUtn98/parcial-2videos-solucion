@@ -9,10 +9,11 @@
 ```java
 /*Me parece que hay dos estrategias válidas de mapeo de herencia acá, Single Table y Joined.
 Ambas permiten consultas polimórficas, lo que necesitamos dado que se querrá filtrar por contenido, y no por video/streaming.
-Por una cuestión de normalización me inclino por la alternativa de JOINED, sin embargo si llegase a afectar considerablemente a la performance, iría por Single Table.
+Por una cuestión de performance, y porque los atributos distintos son muy pocos, voy por Single Table.
 */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscrimatorColum(name="tipo_contenido")
 abstract class Contenido{
 //Los atributos de esta clase se persisten sin problema.
 @Id
@@ -31,11 +32,13 @@ Usuario propietario
 }
 
 @Entity
+@DiscriminatorValue(value="video")
 class Video extends Contenido{
 LocalDate subido
 }
 
 @Entity
+@DiscriminatorValue(value="streaming")
 class Streaming extends Contenido{
 LocalDate fechaInicio
 LocalDate fechaFin
