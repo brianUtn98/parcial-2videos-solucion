@@ -165,3 +165,15 @@ Videos: [
 ```http
 delete /playlist/:id/videos/:id
 ```
+## Parte C - Arquitectura
+
+### Arquitectura 1
+<img src="arquitectura1.png">
+
+Esta primera solución no tiene tolerancia a fallos, cada componente de esta arquitectura es un SPOF. 
+En cuanto a la escalabilidad, esta arquitectura es escalable solo de manera vertical, aumentando el hardware de nuestro servidor.
+
+### Arquitectura 2
+<img src="arquitectura2.png">
+En esta solución podemos hallar múltiples SPOF. Puede confundirse con un balanceador de carga, pero no lo es, ya que cada servidor corresponde a un servicio distinto y no están situados para repartir la carga de un servicio común. La caída de cualquiera de los servicios podría provocar que la aplicación dejara de funcionar.
+Con respecto a escalabilidad, esta solución más libertad. Aún así, la escalabilidad sigue siendo vertical.
