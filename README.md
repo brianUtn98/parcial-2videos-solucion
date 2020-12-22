@@ -93,7 +93,7 @@ dislikes
 }
 
 ```
-### Diagrama de clases
+### Diagrama de entidad relación
 <img src="diagrama2videos.jpg">
 
 ## Parte B - Interfaz REST
