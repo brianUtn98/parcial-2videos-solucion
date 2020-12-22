@@ -89,7 +89,6 @@ likes
 dislikes
 }
 
+```
 #### Diagrama de clases
 <img src="diagrama2videos.jpg">
-```
-
