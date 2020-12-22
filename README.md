@@ -2,9 +2,9 @@
 
 [2Videos](https://docs.google.com/document/d/14vdCNQwkK23qBotHCSzDI1dLv1_bgE7PGDkM6w5N9UA/edit#)
 
-## Resolucion
+# Resolucion
 
-### Parte A persistencia
+## Parte A - Persistencia
 
 ```java
 /*Me parece que hay dos estrategias válidas de mapeo de herencia acá, Single Table y Joined.
@@ -90,5 +90,49 @@ dislikes
 }
 
 ```
-#### Diagrama de clases
+### Diagrama de clases
 <img src="diagrama2videos.jpg">
+
+## Parte B - Interfaz REST
+
+### Perfil de usuario
+
+1. Consultar usuario
+Hay varias alternativas válidas, me quedo con las siguientes:
+* get /usuario
+* get /me
+ No se usa un id de usuario, ya que asumo que se maneja una sesión (no hay otra alternativa que tenga sentido).
+
+2. Editar usuario
+* put /usuario
+* put /me
+* patch /usuario
+* patch /me
+
+### Reproductor de videos
+
+1. Buscar videos
+* get /videos/?video=unaBusqueda
+
+2. Iniciar reproducción
+Aquí necesitamos el reproductor en sí, por lo que usaremos una ruta reproductor
+* get /contenidos/:id
+* patch /contenidos/:id/reproducciones
+
+Esas no son muy validas, lo valido sería:
+* put /contenidos/:id/reproducciones
+
+3. Dar me gusta o deshacer el me gusta.
+* put /contenidos/:id/like
+* delete /contenidos/:id/like
+
+### Editor de listas de reproduccion
+
+1. Visualizar
+* get /playlist/:id
+
+2. Editar
+* patch /playlist/:id
+
+3. Eliminar un video
+* delete /playlist/:id/videos/:id
