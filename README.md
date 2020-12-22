@@ -66,6 +66,7 @@ List<Contenido> contenidos
 Usuario usuarioPropietario
 @ManyToMany
 Collection<Usuario> usuariosCompartidos
+@Enumerated
 Visibilidad visibilidad
 }
 
